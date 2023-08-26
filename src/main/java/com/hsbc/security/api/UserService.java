@@ -3,22 +3,21 @@ package com.hsbc.security.api;
 import com.hsbc.security.api.dto.CreateUserRequest;
 import com.hsbc.security.api.dto.RoleDTO;
 import com.hsbc.security.api.dto.UserDTO;
-import com.hsbc.security.model.UserDO;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface UserService {
 
     /**
      * 创建用户
+     *
      * @param request
      */
     void create(CreateUserRequest request);
 
     /**
      * 根据用户名查询用户
+     *
      * @param userName
      * @return
      */
@@ -26,12 +25,14 @@ public interface UserService {
 
     /**
      * 删除用户
+     *
      * @param userName 用户名
      */
     void remove(String userName);
 
     /**
      * 给特定用户绑定角色
+     *
      * @param roleName 角色名
      * @param userName 用户名
      */
@@ -39,6 +40,7 @@ public interface UserService {
 
     /**
      * 列出特定用户所属的角色名
+     *
      * @param userName 用户名
      * @return
      */
@@ -46,6 +48,7 @@ public interface UserService {
 
     /**
      * 查询特定用户是否拥有所属角色
+     *
      * @param roleName 角色名
      * @param userName 用户名
      * @return

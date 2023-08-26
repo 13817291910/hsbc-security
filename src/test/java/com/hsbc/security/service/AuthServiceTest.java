@@ -17,7 +17,7 @@ public class AuthServiceTest {
     private UserService userService;
 
     @BeforeEach
-    public void prepare(){
+    public void prepare() {
         CreateUserRequest request = new CreateUserRequest();
         request.setUsername("kd");
         request.setPassword("123");
@@ -25,7 +25,7 @@ public class AuthServiceTest {
     }
 
     @Test
-    public void login(){
+    public void login() {
         Assertions.assertTrue(authServive.isValid("kd", "123"));
         Assertions.assertFalse(authServive.isValid("kd", "321"));
         authServive.saveToken("kd");
@@ -33,7 +33,7 @@ public class AuthServiceTest {
     }
 
     @Test
-    public void logout(){
+    public void logout() {
         authServive.isValid("kd", "123");
     }
 }

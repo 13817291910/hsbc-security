@@ -7,6 +7,6 @@ import java.util.List;
 
 @NoArgsConstructor
 @Data
-public class RolesResponse extends BaseResponse{
+public class RolesResponse extends BaseResponse {
     private List<RoleDTO> roles;
 }

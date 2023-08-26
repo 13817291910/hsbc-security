@@ -3,7 +3,7 @@ package com.hsbc.security.error;
 import com.hsbc.security.api.dto.ResultCode;
 import lombok.Getter;
 
-public class ServiceException extends RuntimeException{
+public class ServiceException extends RuntimeException {
 
     @Getter
     private final ResultCode resultCode;

@@ -4,7 +4,9 @@ import com.github.benmanes.caffeine.cache.Cache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 @Repository
 public class UserRoleDAOImpl implements UserRoleDAO {
@@ -19,7 +21,7 @@ public class UserRoleDAOImpl implements UserRoleDAO {
 
     @Override
     public void removeByRoleName(String roleName) {
-        for (Map.Entry<String, Set<String>> entry: userRolesCache.asMap().entrySet()){
+        for (Map.Entry<String, Set<String>> entry : userRolesCache.asMap().entrySet()) {
             Set<String> roleNames = entry.getValue();
             roleNames.remove(roleName);
         }

@@ -13,18 +13,17 @@ public class RoleServiceTest {
     private RoleService roleSerice;
 
     @Test
-    public void AddRole(){
+    public void AddRole() {
         roleSerice.saveRole("11");
         Assertions.assertNotNull(roleSerice.getRole("11"));
     }
 
     @Test
-    public void removeRole(){
+    public void removeRole() {
         roleSerice.saveRole("11");
         roleSerice.removeRoleByName("11");
         Assertions.assertNull(roleSerice.getRole("11"));
     }
-
 
 
 }

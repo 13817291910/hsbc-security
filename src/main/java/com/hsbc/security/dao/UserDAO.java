@@ -10,5 +10,4 @@ public interface UserDAO {
     UserDO getByUsername(String userName);
 
 
-
 }

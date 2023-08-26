@@ -5,11 +5,11 @@ import com.hsbc.security.api.UserService;
 import com.hsbc.security.api.dto.CreateUserRequest;
 import com.hsbc.security.api.dto.RoleDTO;
 import com.hsbc.security.api.dto.UserDTO;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.junit.jupiter.api.Assertions;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class UserServiceTest {
     private RoleService roleService;
 
     @BeforeEach
-    public void prepare(){
+    public void prepare() {
         CreateUserRequest request = new CreateUserRequest();
         request.setUsername("kd");
         request.setPassword("123");
@@ -33,7 +33,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void createUser(){
+    public void createUser() {
         CreateUserRequest request = new CreateUserRequest();
         request.setUsername("kd1");
         request.setPassword("1234");
@@ -43,21 +43,21 @@ public class UserServiceTest {
     }
 
     @Test
-    public void removeUser(){
+    public void removeUser() {
         userService.remove("kd");
         UserDTO userDTO = userService.getByUserName("kd");
         Assertions.assertNull(userDTO);
     }
 
     @Test
-    public void bindRole(){
+    public void bindRole() {
         roleService.saveRole("11");
         userService.bindRole("11", "kd");
         Assertions.assertTrue(userService.checkRole("11", "kd"));
     }
 
     @Test
-    public void listRules(){
+    public void listRules() {
         List<RoleDTO> rolesDTO = userService.listRolesByUserName("kd");
         Assertions.assertEquals("1", rolesDTO.get(0).getRoleName());
     }

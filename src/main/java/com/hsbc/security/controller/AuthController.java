@@ -24,13 +24,14 @@ public class AuthController {
 
     /**
      * 登录账号，如果已经登录，会踢掉老的session,并刷新token
+     *
      * @param request 用户名和密码
      * @return 返回是否登录成功
      */
     @PostMapping("/session")
     public ResponseEntity login(@RequestBody LoginRequest request) {
         boolean valid = authService.isValid(request.getUsername(), request.getPassword());
-        if (!valid){
+        if (!valid) {
             return ResponseEntity.status(ResultCode.BAD_REQUEST.getCode()).body(ResultCode.BAD_REQUEST.getMsg());
         }
 
@@ -42,13 +43,14 @@ public class AuthController {
 
     /**
      * 退登账号，需携带当前账号的auth token
+     *
      * @return 根据账号状态返回是否退登成功
      */
     @DeleteMapping("/session")
     @Auth
-    public ResponseEntity logout(){
+    public ResponseEntity logout() {
         boolean isLogin = authService.isLogin(AuthContext.getAuthz());
-        if (!isLogin){
+        if (!isLogin) {
             return ResponseEntity.status(ResultCode.BAD_REQUEST.getCode()).body(ErrorMsgConstant.INVALID_TOKEN);
         }
         authService.logout(AuthContext.getAuthz());

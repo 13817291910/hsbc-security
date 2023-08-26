@@ -35,8 +35,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void create(CreateUserRequest request) {
-        UserDO userDO= userDAO.getByUsername(request.getUsername());
-        if (userDO != null){
+        UserDO userDO = userDAO.getByUsername(request.getUsername());
+        if (userDO != null) {
             throw new ServiceException(ResultCode.FAILURE, ErrorMsgConstant.DUPLICATED_USER);
         }
 
@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void bindRole(String roleName, String userName) {
         RoleDO roleDO = roleDAO.getRoleByName(roleName);
-        if (roleDO == null){
+        if (roleDO == null) {
             throw new ServiceException(ErrorMsgConstant.ROLE_NOT_EXIST);
         }
 
@@ -77,7 +77,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<RoleDTO> listRolesByUserName(String userName) {
         Set<String> roleNames = userRoleDAO.getRoleNamesByUser(userName);
-        if (roleNames == null){
+        if (roleNames == null) {
             return null;
         }
 
@@ -87,7 +87,7 @@ public class UserServiceImpl implements UserService {
 
     public boolean checkRole(String roleName, String userName) {
         Set<String> roleNames = userRoleDAO.getRoleNamesByUser(userName);
-        if (roleNames == null){
+        if (roleNames == null) {
             return false;
         }
 

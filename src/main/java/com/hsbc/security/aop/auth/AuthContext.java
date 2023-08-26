@@ -12,7 +12,7 @@ public class AuthContext {
     private static String getRequetHeader(String headerName) {
         RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
         if (requestAttributes instanceof ServletRequestAttributes) {
-            HttpServletRequest request = ((ServletRequestAttributes)requestAttributes).getRequest();
+            HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
             String value = request.getHeader(headerName);
             return value;
         }

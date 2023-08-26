@@ -2,7 +2,6 @@ package com.hsbc.security.aop.auth;
 
 import com.hsbc.security.api.AuthService;
 import com.hsbc.security.api.dto.ResultCode;
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -21,14 +20,14 @@ public class AuthAspect {
     private AuthService authService;
 
     @Pointcut("@annotation(com.hsbc.security.aop.auth.Auth)")
-    public void authPointcut(){
+    public void authPointcut() {
 
     }
 
     @Before("authPointcut()")
-    public ResponseEntity authBefore(ProceedingJoinPoint joinPoint){
+    public ResponseEntity authBefore(ProceedingJoinPoint joinPoint) {
         String token = AuthContext.getAuthz();
-        if (!authService.isLogin(token)){
+        if (!authService.isLogin(token)) {
             return ResponseEntity.status(ResultCode.UNAUTHORIZED.getCode()).body(ResultCode.UNAUTHORIZED.getMsg());
         }
         Object res;
